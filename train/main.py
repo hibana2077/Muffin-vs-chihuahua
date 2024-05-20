@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-20 15:37:01
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-20 15:38:08
+LastEditTime: 2024-05-20 15:43:48
 FilePath: \Muffin-vs-chihuahua\train\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE/
 '''
@@ -47,7 +47,7 @@ dummy_input = torch.randn(1, 3, 224, 224)
 class Model(nn.Module):
     def __init__(self):
         super(Model, self).__init__()
-        self.model = timm.create_model('vit_small_resnet26d_224')
+        self.model = timm.create_model('vit_small_resnet26d_224', pretrained=False)
         self.model.head = nn.Linear(self.model.head.in_features, 2)
 
     def forward(self, x):
@@ -74,7 +74,7 @@ LR_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10)
 
 # train model
 loss_history = []
-EPOCHS = 5
+EPOCHS = 6
 
 for EPOCH in range(EPOCHS):
     m.train()
