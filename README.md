@@ -1,5 +1,9 @@
 # Muffin vs chihuahua
 
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=pytorch,py" /><br>
+</p>
+
 ## Introduction
 
 This is a simple project to predict if an image is a muffin or a chihuahua. The project use vit_small_resnet26d_224 model from timm library.
