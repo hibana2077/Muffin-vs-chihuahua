@@ -25,6 +25,16 @@ python train.py
 
 And you can check the result in the `img` folder.
 
+## Results
+
+The model has an accuracy of 0.98.
+
+![loss](img/loss.png)
+
+## Prediction
+
+![random](./img/predict.png)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
