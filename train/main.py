@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-20 15:37:01
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-20 15:43:48
+LastEditTime: 2024-05-20 16:47:36
 FilePath: \Muffin-vs-chihuahua\train\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE/
 '''
@@ -69,12 +69,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 m = m.to(device)
 
 criterion = nn.CrossEntropyLoss()
-optimizer = timm.optim.Lookahead(timm.optim.RAdam(m.parameters(), lr=1e-3))
-LR_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10)
+optimizer = timm.optim.Lookahead(timm.optim.AdamW(m.parameters(), lr=1e-3))
+# LR_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=10)
 
 # train model
 loss_history = []
-EPOCHS = 6
+EPOCHS = 10
 
 for EPOCH in range(EPOCHS):
     m.train()
@@ -92,9 +92,9 @@ for EPOCH in range(EPOCHS):
         
         running_loss += loss.item()
     
-    LR_scheduler.step()
+    # LR_scheduler.step()
     
-    print(f"Epoch {EPOCH+1}, Loss: {running_loss/len(train_loader)}, LR: {optimizer.param_groups[0]['lr']}")
+    print(f"Epoch {EPOCH+1}, Loss: {running_loss/len(train_loader)}")
     loss_history.append(running_loss/len(train_loader))
 
 # plot loss history
@@ -128,7 +128,6 @@ print(f"Accuracy: {100*correct/total}%")
 
 import matplotlib.pyplot as plt
 import numpy as np
-import torchvision
 
 random_idx = np.random.randint(0, len(test_dataset), 1)[0]
 image, label = test_dataset[random_idx]
