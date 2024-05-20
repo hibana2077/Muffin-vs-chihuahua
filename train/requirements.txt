@@ -1,0 +1,4 @@
+timm
+onnx
+tqdm
+numpy
