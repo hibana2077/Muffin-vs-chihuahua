@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-20 15:37:01
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-20 16:47:36
+LastEditTime: 2024-05-20 17:08:05
 FilePath: \Muffin-vs-chihuahua\train\main.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE/
 '''
@@ -37,8 +37,8 @@ test_transform = transforms.Compose([
 train_dataset = ImageFolder(train_data_dir, transform=train_transform)
 test_dataset = ImageFolder(test_data_dir, transform=test_transform)
 
-train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=8, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 dummy_input = torch.randn(1, 3, 224, 224)
 
